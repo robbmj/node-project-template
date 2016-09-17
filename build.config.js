@@ -73,19 +73,21 @@ module.exports.prodBuild = {
     }
 };
 
-module.exports.buildDir = './final/';
+module.exports.buildDir     = './final/';
 
-module.exports.tmp = './tmp/';
+module.exports.tmp          = './tmp/';
 
-module.exports.buildName = 'bebop';
+module.exports.buildName    = 'build';
 
-module.exports.entryPoint = './src/main.js';
+module.exports.entryPoint   = './src/main.js';
 
-module.exports.srcDir = './src/**/*.js';
+module.exports.srcDir       = './src/**/*.js';
 
-module.exports.testDir = 'tests';
+module.exports.testDir      = 'tests';
 
-module.exports.testFiles = '/**/*\.test\.js';
+module.exports.testFiles    = '/**/*\.test\.js';
+
+module.exports.licenceFile  = './LICENCE';
 
 module.exports.banner = ['/**',
         ' * <%= pkg.name %> - <%= pkg.description %>',
@@ -93,4 +95,4 @@ module.exports.banner = ['/**',
         ' */',
         ''].join('\n');
 
-module.exports.licenceFile = './LICENCE';
+

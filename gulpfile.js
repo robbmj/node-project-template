@@ -47,7 +47,6 @@ function build(options) {
         .bundle()
         .pipe(source(buildConfig.buildName + '.js'))
         .pipe(buffer())
-        .pipe(babel(buildConfig.babel))
         .pipe(header(licence + buildConfig.banner, pkgInfo))
         .pipe(gulp.dest(buildConfig.buildDir))
         .pipe(uglify(buildConfig.uglifyOptions))
@@ -67,10 +66,11 @@ gulp.task('clean', function () {
     return del([buildConfig.buildDir, buildConfig.tmp]);
 });
 
-gulp.task('babel', function () {
-  return gulp.src("./src/**/*.js")
-      .pipe(babel({ optional: ["runtime"] }))
-      .pipe(gulp.dest("./build/gipp-transpiled/lib/"));
+
+gulp.task('babel', ['meta-dev'], function () {
+  return gulp.src(buildConfig.tmp)
+      .pipe(babel(buildConfig.babel))
+      .pipe(gulp.dest(buildConfig.tmp));
 });
 
 gulp.task('meta-dev', ['clean'], function () {
@@ -81,7 +81,7 @@ gulp.task('meta-prod', ['clean'], function () {
     return meta(buildConfig.prodBuild.metaScript);
 });
 
-gulp.task('build', ['meta-dev'], function () {
+gulp.task('build', ['babel'], function () {
     return build(buildConfig.devBuild);
 });
 
