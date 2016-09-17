@@ -8,12 +8,14 @@
     },
     "source": {
         "include": [
-            "./src", "./doc_tmpl"
+            "./src"
         ],
         "includePattern": ".+\\.js"
     },
     "plugins": [
+        "node_modules/jsdoc-strip-async-await/index",
         "plugins/markdown"
+
     ],
     "templates": {
         "cleverLinks": false,

@@ -4,7 +4,9 @@
   "description": "A project template for javascript applications",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "cd test && jasmine",
+    "start": "gulp watch",
+    "doc": "./node_modules/.bin/jsdoc -d ./docs -c ./jsdoc.conf.json -P ./package.json"
   },
   "keywords": [
     "node",
@@ -37,6 +39,7 @@
     "gulp-webserver": "^0.9.1",
     "jasmine": "^2.5.2",
     "jsdoc": "^3.4.1",
+    "jsdoc-strip-async-await": "^0.1.0",
     "jshint": "^2.9.3",
     "jshint-stylish": "^2.2.1",
     "vinyl-buffer": "^1.0.0",

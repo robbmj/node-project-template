@@ -21,6 +21,9 @@ class GenUtils {
     }
 }
 
+/**
+ * @return {GenUtils}
+ */
 function generator() {
     return new GenUtils(function * () {
         for (let v of [0, 1, 2, 3, 4]) {
