@@ -3,8 +3,6 @@
 
 import Promise from 'bluebird';
 
-const all = Promise.all.bind(Promise);
-
 class GenUtils {
     constructor(generator) {
         this[Symbol.iterator] = generator;
@@ -24,7 +22,7 @@ class GenUtils {
 }
 
 function generator() {
-    return new GenUtils(function* () {
+    return new GenUtils(function * () {
         for (let v of [0, 1, 2, 3, 4]) {
             yield v;
         }
@@ -43,8 +41,12 @@ async function test() {
     console.log([...generator()]);
     console.log(generator().filter(v => (v & 1) === 0));
 
-    const message = await all([asyncTest(1000), asyncTest(2000)]);
-    console.log(message);
+    const messages = await Promise.all([asyncTest(1000), asyncTest(2000)]);
+    console.log(messages);
+    return messages;
+
 }
 
 test();
+
+export default test;

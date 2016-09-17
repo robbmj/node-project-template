@@ -35,7 +35,8 @@ module.exports.jshint = {
     curly:              true,
     eqeqeq:             true,
     freeze:             true,
-    futurehostile:      true
+    futurehostile:      true,
+    esversion:          6
 };
 
 module.exports.babel = {
