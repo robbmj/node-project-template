@@ -1,0 +1,16 @@
+{
+  "name": "node-project-template",
+  "version": "1.0.0",
+  "description": "A project template for javascript applications",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "node",
+    "project",
+    "template"
+  ],
+  "author": "Michael Robb <michael.robb.proj@gmail.com>",
+  "license": "MIT"
+}
