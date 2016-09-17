@@ -68,8 +68,7 @@ gulp.task('clean', function () {
 });
 
 gulp.task('babel', function () {
-  return gulp
-      .src("./src/**/*.js")
+  return gulp.src("./src/**/*.js")
       .pipe(babel({ optional: ["runtime"] }))
       .pipe(gulp.dest("./build/gipp-transpiled/lib/"));
 });

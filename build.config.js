@@ -47,7 +47,8 @@ module.exports.devBuild = {
     browserify: {
         insetGlobals:   true,
         debug:          false,
-        entries:        ['./tmp/main.js']
+        entries:        ['./tmp/main.js'],
+        extensions:     ['.js', '.json', '.es6']
     },
     metaScript: {
         ENFORCE_TYPE:   true,
@@ -61,7 +62,8 @@ module.exports.prodBuild = {
     browserify: {
         insetGlobals:   true,
         debug:          false,
-        entries:        ['./tmp/main.js']
+        entries:        ['./tmp/main.js'],
+        extensions:     ['.js', '.json', '.es6']
     },
     metaScript: {
         ENFORCE_TYPE:   false,
