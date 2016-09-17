@@ -3,7 +3,7 @@
 
 import Promise from 'bluebird';
 
-//const Promise = require("bluebird");
+const all = Promise.all.bind(Promise);
 
 class GenUtils {
     constructor(generator) {
@@ -31,13 +31,20 @@ function generator() {
     });
 }
 
-async function asyncTest() {
-
+async function asyncTest(ms) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(`you waited ${ms} milliseconds for this message`);
+        }, ms);
+    });
 }
 
-function test() {
+async function test() {
     console.log([...generator()]);
     console.log(generator().filter(v => (v & 1) === 0));
+
+    const message = await all([asyncTest(1000), asyncTest(2000)]);
+    console.log(message);
 }
 
 test();

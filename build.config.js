@@ -39,15 +39,20 @@ module.exports.jshint = {
 };
 
 module.exports.babel = {
-    presets:            ["es2015", "stage-3"],
-    plugins:            ["transform-runtime"]
+    presets: ['es2015', 'stage-3'],
+    plugins: [
+        "syntax-async-functions",
+        "transform-async-to-generator",
+        "transform-regenerator",
+        "transform-runtime"
+    ]
 };
 
 module.exports.devBuild = {
     browserify: {
         insetGlobals:   true,
         debug:          false,
-        entries:        ['./tmp/main.js'],
+        entries:        ['./build/node/main.js'],
         extensions:     ['.js', '.json', '.es6']
     },
     metaScript: {
@@ -62,7 +67,7 @@ module.exports.prodBuild = {
     browserify: {
         insetGlobals:   true,
         debug:          false,
-        entries:        ['./tmp/main.js'],
+        entries:        ['./build/node/main.js'],
         extensions:     ['.js', '.json', '.es6']
     },
     metaScript: {
@@ -73,22 +78,19 @@ module.exports.prodBuild = {
     }
 };
 
-module.exports.buildDir     = './final/';
+module.exports.srcDir           = './src/**/*.js';
+module.exports.metaBuildDir     = './tmp/';
 
-module.exports.tmp          = './tmp/';
+module.exports.babelEntryPoint  = './tmp/main.js';
+module.exports.babelBuildDir    = './build/node';
 
-module.exports.buildName    = 'build';
+module.exports.buildDir         = './build/';
+module.exports.buildName        = 'build';
 
-module.exports.entryPoint   = './src/main.js';
+module.exports.testDir          = 'tests';
+module.exports.testFiles        = '/**/*\.test\.js';
 
-module.exports.srcDir       = './src/**/*.js';
-
-module.exports.testDir      = 'tests';
-
-module.exports.testFiles    = '/**/*\.test\.js';
-
-module.exports.licenceFile  = './LICENCE';
-
+module.exports.licenceFile      = './LICENCE';
 module.exports.banner = ['/**',
         ' * <%= pkg.name %> - <%= pkg.description %>',
         ' * @version v<%= pkg.version %>',

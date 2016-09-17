@@ -58,7 +58,7 @@ function build(options) {
 function meta(metaScriptOptions) {
     return gulp.src(buildConfig.srcDir)
         .pipe(metaScript(metaScriptOptions))
-        .pipe(gulp.dest(buildConfig.tmp));
+        .pipe(gulp.dest(buildConfig.metaBuildDir));
 }
 
 // Build Tasks
@@ -68,12 +68,13 @@ gulp.task('clean', function () {
 
 
 gulp.task('babel', ['meta-dev'], function () {
-  return gulp.src(buildConfig.tmp)
-      .pipe(babel(buildConfig.babel))
-      .pipe(gulp.dest(buildConfig.tmp));
+
+    return gulp.src(buildConfig.babelEntryPoint)
+        .pipe(babel(buildConfig.babel))
+        .pipe(gulp.dest(buildConfig.babelBuildDir));
 });
 
-gulp.task('meta-dev', ['clean'], function () {
+gulp.task('meta-dev', /*['clean'],*/ function () {
     return meta(buildConfig.devBuild.metaScript);
 });
 
