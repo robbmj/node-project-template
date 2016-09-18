@@ -4,8 +4,8 @@ Get an ES 6 project setup and ready for development in seconds.
 
 ## Out of the Box
 
-- Babel (support includes async and await)
-- JSDoc
+- Babel (support includes async, await, decorators)
+- ESDoc
 - Jasmine
 - Development Web Server
 - Browserify
@@ -36,9 +36,7 @@ To run the liner issue the command: `$ gulp lint`
 
 #### Running the unit tests
 
-To run the tests issue the command: `$ gulp test` or install Jasmin globally and run `$ npm run test`.
-
-**Please always run the unit tests and fix any errors before committing code**
+To run the tests issue the command: `$ gulp test`.
 
 #### Building the Documentation
 

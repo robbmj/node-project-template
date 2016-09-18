@@ -36,17 +36,8 @@ module.exports.jshint = {
     eqeqeq:             true,
     freeze:             true,
     futurehostile:      true,
+    jasmine:            true,
     esversion:          6
-};
-
-module.exports.babel = {
-    presets: ['es2015', 'stage-3'],
-    plugins: [
-        "syntax-async-functions",
-        "transform-async-to-generator",
-        "transform-regenerator",
-        "transform-runtime"
-    ]
 };
 
 module.exports.devBuild = {
@@ -79,10 +70,36 @@ module.exports.prodBuild = {
     }
 };
 
-module.exports.srcDir           = './src/**/*.js';
-module.exports.metaBuildDir     = './tmp/';
+module.exports.esdoc = {
+    src: './src',
+    config: {
+        destination: './docs',
+        plugins: [
+            {name: 'esdoc-es7-plugin'}
+        ],
+        access: ['public', 'protected', 'private'],
+        unexportIdentifier: true
+    }
+};
 
-module.exports.babelEntryPoint  = './tmp/main.js';
+module.exports.babel = {
+    presets: ['es2015', 'stage-3'],
+    plugins: [
+        'transform-decorators-legacy',
+        'syntax-decorators',
+        'transform-decorators',
+        'transform-class-properties',
+        'syntax-async-functions',
+        'transform-async-to-generator',
+        'transform-regenerator',
+        'transform-runtime'
+    ]
+};
+
+module.exports.srcDir           = './src/**/*.js';
+module.exports.metaBuildDir     = './.tmp/';
+
+module.exports.babelEntryPoint  = './.tmp/**/*.js';
 module.exports.babelBuildDir    = './build/node';
 
 module.exports.buildDir         = './build/';
@@ -91,11 +108,11 @@ module.exports.buildName        = 'build';
 module.exports.testDir          = 'tests';
 module.exports.testFiles        = '/**/*\.test\.js';
 
+module.exports.lintFiles        = ['./tests/**/*.js', './src/**/*.js', './**/*.js'];
+
 module.exports.licenceFile      = './LICENCE';
 module.exports.banner = ['/**',
         ' * <%= pkg.name %> - <%= pkg.description %>',
         ' * @version v<%= pkg.version %>',
         ' */',
         ''].join('\n');
-
-
